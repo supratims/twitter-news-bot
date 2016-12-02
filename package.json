@@ -9,6 +9,7 @@
   "author": "supratims",
   "license": "MIT",
   "dependencies": {
-    "properties-reader": "0.0.15"
+    "properties-reader": "0.0.15",
+    "twitter": "^1.4.0"
   }
 }
