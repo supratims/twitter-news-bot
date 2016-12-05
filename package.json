@@ -7,9 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "supratims",
+  "repository": "git",
   "license": "MIT",
   "dependencies": {
     "properties-reader": "0.0.15",
+    "request": "^2.79.0",
     "twitter": "^1.4.0"
   }
 }
