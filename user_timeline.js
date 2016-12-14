@@ -1,19 +1,28 @@
 var properties = require('./properties');
 var Twitter = require('twitter');
+var twitter_keys = properties.twitterKeys('twitter.keys');
 
 var client = new Twitter({
-  consumer_key: properties.consumer_key,
-  consumer_secret: properties.consumer_secret,
-  access_token_key: properties.access_token_key,
-  access_token_secret: properties.access_token_secret
+  consumer_key: twitter_keys.consumer_key,
+  consumer_secret: twitter_keys.consumer_secret,
+  access_token_key: twitter_keys.access_token_key,
+  access_token_secret: twitter_keys.access_token_secret
 });
 
-client.get('statuses/user_timeline', {screen_name: 'sturents'}, function(errors, tweets, response){
-	if (errors){
-		throw errors;
-	}
-
-        tweets.forEach(function(tweet){
-		console.log(tweet.text);		
+function _timeline(params, callback){
+	client.get('statuses/user_timeline', params, function(errors, tweets, response){
+		if (errors){
+			throw errors;
+		}
+		callback && callback(tweets);
+		/*
+        	tweets.forEach(function(tweet){
+			console.log(tweet.created_at +' '+ tweet.text);		
+		});
+		*/
 	});
-});
+}
+
+module.exports = {
+        timeline : _timeline
+}
