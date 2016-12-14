@@ -14,7 +14,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 
 (function poll(){
 	var params = {
-		'screen_name': 'sturents', 'count' : 20
+		'screen_name': 'sturents', 'count' : 1
 	};
 	if (last_id){
 		params.since_id = last_id;
@@ -25,10 +25,21 @@ if (!isNaN(parseInt(tweets_analysed))){
 		}
 		else {
 			tweets.forEach(function(item, i){
-				console.log(item.id+' : '+item.text);			
 				if (i==0) {
+					console.log('Retweeting : ' + item.id+' : '+item.text);
+					retweet.retweet(item.id_str, function (tweeted_item){
+						if (tweeted_item) {
+							console.log("Retweeted : " + tweeted_item.text);
+						}
+						else {
+							console.log("Retweet failed");
+						}
+					});	
 					// We store the most recent tweet ID in a file
 					fs.writeFile('./tweets.json', item.id);
+				}
+				else {
+					console.log(item.id+' : '+item.text);
 				}
 			})
 		}

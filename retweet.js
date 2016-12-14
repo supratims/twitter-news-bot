@@ -13,11 +13,13 @@ var client = new Twitter({
 function _retweet(tweet_id, callback){
 	client.post('statuses/retweet', {id: tweet_id}, function(error, tweet, response) {
 
-		if (error) throw error;
+		if (error) {
+			console.log(error);
+		}
 
 		//console.log(response);  // Raw response object. 
 
-		callback && callback();
+		callback && callback(tweet);
 
 	});
 }
