@@ -35,7 +35,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 							console.log("Retweet failed");
 						}
 					});	
-					// We store the most recent tweet ID in a file
+					// We store the most recently retweeted tweet ID in a file
 					fs.writeFile('./tweets.json', item.id);
 				}
 				else {
@@ -45,7 +45,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 		}
 
 		// We sleep for some amount of time and then poll again
-		var sleep = 20*1000; 
+		var sleep = 5*1000; 
 	        setTimeout(function () {
 			poll();
 	        }, sleep);
