@@ -12,14 +12,10 @@ var client = new Twitter({
 function _timeline(params, callback){
 	client.get('statuses/user_timeline', params, function(errors, tweets, response){
 		if (errors){
-			throw errors;
+			//throw errors;
+			console.log (errors);
 		}
 		callback && callback(tweets);
-		/*
-        	tweets.forEach(function(tweet){
-			console.log(tweet.created_at +' '+ tweet.text);		
-		});
-		*/
 	});
 }
 
