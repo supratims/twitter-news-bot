@@ -1,5 +1,4 @@
 var fs = require('fs');
-var properties = require('./properties');
 var user_timeline = require('./user_timeline');
 var retweet = require('./retweet');
 
