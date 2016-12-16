@@ -3,7 +3,10 @@ var user_timeline = require('./user_timeline');
 var retweet = require('./retweet');
 
 // contains the last id analysed
-var tweets_analysed = fs.readFileSync('./last_retweet', 'utf8');
+var tweets_analysed;
+if (fs.existsSync('./last_retweet')){
+	tweets_analysed = fs.readFileSync('./last_retweet', 'utf8');
+}
 		
 function _run(){
 

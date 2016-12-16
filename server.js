@@ -10,10 +10,10 @@ if ('development' == env) {
 }
 
 app.get('/', function(req, res){
-	res.send(fs.readFileSync('./retweets.json'));
+	res.send(fs.existsSync('./retweets.json') ? fs.readFileSync('./retweets.json', 'utf8') : 'No retweets yet !');
 });
 app.get('/last', function(req, res){
-        res.send(fs.readFileSync('./last_retweet'));
+        res.send(fs.existsSync('./last_retweet') ? fs.readFileSync('./last_retweet', 'utf8') : 'No last retweet found');
 });
 
 app.listen(process.env.PORT || 3000);
