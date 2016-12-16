@@ -26,6 +26,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 			tweets.forEach(function(item, i){
 				if (i==0) {
 					console.log('Retweeting : ' + item.id+' : '+item.text);
+					fs.appendFile('./retweets.json', item.id+', ');
 					retweet.retweet(item.id_str, function (tweeted_item){
 						if (tweeted_item) {
 							console.log("Retweeted : " + tweeted_item.text);

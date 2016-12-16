@@ -1,4 +1,4 @@
 node_modules
 *.keys
 people
-tweets.json
+*.json
