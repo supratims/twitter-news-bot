@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var fs = require('fs');
 
 var app = express();
 app.use(bodyParser.json());
@@ -9,11 +8,13 @@ if ('development' == env) {
    // configure stuff here
 }
 
+var bot_stats = require('./bot_stats');
+
 app.get('/', function(req, res){
-	res.send(fs.existsSync('./retweets.json') ? fs.readFileSync('./retweets.json', 'utf8') : 'No retweets yet !');
+	res.send(bot_stats.retweets());
 });
 app.get('/last', function(req, res){
-        res.send(fs.existsSync('./last_retweet') ? fs.readFileSync('./last_retweet', 'utf8') : 'No last retweet found');
+        res.send(bot_stats.last_retweet());
 });
 
 app.listen(process.env.PORT || 3000);
