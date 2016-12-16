@@ -1,12 +1,9 @@
-var fs = require('fs');
 var user_timeline = require('./user_timeline');
 var retweet = require('./retweet');
+var bot_stats = require('./bot_stats');
 
 // contains the last id analysed
-var tweets_analysed;
-if (fs.existsSync('./last_retweet')){
-	tweets_analysed = fs.readFileSync('./last_retweet', 'utf8');
-}
+var tweets_analysed = bot_stats.last_retweet();
 		
 function _run(){
 
@@ -31,9 +28,9 @@ function _run(){
 				tweets.forEach(function(item, i){
 					if (i==0) {
 						console.log('Retweeting : ' + item.id+' : '+item.text);
-						fs.appendFile('./retweets.json', item.id+', ');
+						bot_stats.store_retweets(item);
 						retweet.retweet(item.id_str, function (tweeted_item){
-							if (tweeted_item) {
+							if (tweeted_item && tweeted_item.text) {
 								console.log("Retweeted : " + tweeted_item.text);
 							}
 							else {
@@ -41,7 +38,7 @@ function _run(){
 							}
 						});	
 						// We store the most recently retweeted tweet ID in a file
-						fs.writeFile('./last_retweet', item.id);
+						bot_stats.store_last_retweet(item);
 					}
 					else {
 						console.log(item.id+' : '+item.text);

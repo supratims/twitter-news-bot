@@ -1,15 +1,27 @@
 var fs = require('fs');
 
+var retweets_file = './retweets.json'; 
+var last_retweet_file = './last_retweet';
+
+function store_retweets(tweet){
+	fs.appendFile(retweets_file, tweet.id+', ');
+}
+
 function retweets(){
-	return fs.existsSync('./retweets.json') ? fs.readFileSync('./retweets.json', 'utf8') : 'No retweets yet !';
+	return fs.existsSync(retweets_file) ? fs.readFileSync(retweets_file, 'utf8') : 'No retweets yet !';
+}
+
+function store_last_retweet(tweet){
+	fs.writeFile(last_retweet_file, tweet.id);
 }
 
 function last_retweet(){
-	return fs.existsSync('./last_retweet') ? fs.readFileSync('./last_retweet', 'utf8') : 'No last retweet found';
+	return fs.existsSync(last_retweet_file) ? fs.readFileSync(last_retweet_file, 'utf8') : 'No last retweet found';
 }
 
-
 module.exports = {
-	retweets : retweets,
-	last_retweet: last_retweet
+	retweets: retweets,
+	last_retweet: last_retweet,
+	store_last_retweet: store_last_retweet,
+	store_retweets: store_retweets
 }
