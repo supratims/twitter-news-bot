@@ -16,4 +16,4 @@ app.listen(process.env.NODE_PORT || 3000);
 console.log('Listening on port ' + (process.env.NODE_PORT || 3000));
 
 var poll_user = require('./poll_user');
-poll_user.run():
+poll_user.run();
