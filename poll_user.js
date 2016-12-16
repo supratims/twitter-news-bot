@@ -2,8 +2,8 @@ var fs = require('fs');
 var user_timeline = require('./user_timeline');
 var retweet = require('./retweet');
 
-// tweets.json contains the last id analysed
-var tweets_analysed = fs.readFileSync('./tweets.json', 'utf8');
+// contains the last id analysed
+var tweets_analysed = fs.readFileSync('./last_retweet', 'utf8');
 		
 var last_id;
 
@@ -36,7 +36,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 						}
 					});	
 					// We store the most recently retweeted tweet ID in a file
-					fs.writeFile('./tweets.json', item.id);
+					fs.writeFile('./last_retweet', item.id);
 				}
 				else {
 					console.log(item.id+' : '+item.text);
