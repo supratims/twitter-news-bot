@@ -4,7 +4,7 @@
   "description": "A simple bot that grabs important news from twitter stream",
   "main": "index.js",
   "scripts": {
-    "start": "node poll_user.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "supratims",
