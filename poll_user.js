@@ -55,6 +55,6 @@ function _run(){
 	})();
 }
 
-module.export = {
-	run: _run;
+module.exports = {
+	run: _run
 };

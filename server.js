@@ -1,5 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+
 var app = express();
 app.use(bodyParser.json());
 var env = process.env.NODE_ENV || 'development';
@@ -8,8 +10,7 @@ if ('development' == env) {
 }
 
 app.get('/', function(req, res){
-	var html = 'Retweets';
-	res.send(html);
+	res.send(fs.readFileSync('./retweets.json'));
 });
 
 app.listen(process.env.NODE_PORT || 3000);
