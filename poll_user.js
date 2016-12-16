@@ -19,7 +19,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 		params.since_id = last_id;
 	}
 	user_timeline.timeline(params, function(tweets){
-		if (!tweets || tweets.length===0){
+		if (!tweets || tweets.length==0){
 			console.log("No new tweets found ...");			
 		}
 		else {
@@ -44,7 +44,7 @@ if (!isNaN(parseInt(tweets_analysed))){
 		}
 
 		// We sleep for some amount of time and then poll again
-		var sleep = 5*1000; 
+		var sleep = 30*1000; 
 	        setTimeout(function () {
 			poll();
 	        }, sleep);
