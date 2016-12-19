@@ -4,7 +4,7 @@ var retweets_file = './retweets.json';
 var last_retweet_file = './last_retweet';
 
 function store_retweets(tweet){
-	fs.appendFile(retweets_file, tweet.id+', ');
+	fs.appendFileSync(retweets_file, tweet.id+', ');
 }
 
 function retweets(){

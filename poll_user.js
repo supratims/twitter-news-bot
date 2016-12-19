@@ -2,18 +2,15 @@ var user_timeline = require('./user_timeline');
 var retweet = require('./retweet');
 var bot_stats = require('./bot_stats');
 
-// contains the last id analysed
-var tweets_analysed = bot_stats.last_retweet();
 		
 function _run(){
-
-	var last_id;
-
-	if (!isNaN(parseInt(tweets_analysed))){
-		last_id = tweets_analysed;
-	}
-
 	(function poll(){
+		var last_id;
+		// contains the last id analysed
+		var tweets_analysed = bot_stats.last_retweet();
+		if (!isNaN(parseInt(tweets_analysed))){
+			last_id = tweets_analysed;
+		}
 		var params = {
 			'screen_name': 'sturents', 'count' : 1
 		};
