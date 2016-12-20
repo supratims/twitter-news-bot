@@ -2,6 +2,7 @@ var user_timeline = require('./user_timeline');
 var retweet = require('./retweet');
 var bot_stats = require('./bot_stats');
 
+var poll_interval = 120; // 2 mins
 		
 function _run(){
 	(function poll(){
@@ -44,7 +45,7 @@ function _run(){
 			}
 
 			// We sleep for some amount of time and then poll again
-			var sleep = 30*1000; 
+			var sleep = poll_interval*1000; 
 	        	setTimeout(function () {
 				poll();
 		        }, sleep);

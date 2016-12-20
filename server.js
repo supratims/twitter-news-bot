@@ -22,3 +22,6 @@ console.log('Listening on port ' + (process.env.PORT || 3000));
 
 var poll_user = require('./poll_user');
 poll_user.run();
+
+var ping_app = require('./ping_app');
+ping_app.run();
