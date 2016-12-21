@@ -26,10 +26,10 @@ function _run(){
 				tweets.forEach(function(item, i){
 					if (i==0) {
 						console.log('Retweeting : ' + item.id+' : '+item.text);
-						bot_stats.store_retweets(item);
 						retweet.retweet(item.id_str, function (tweeted_item){
 							if (tweeted_item && tweeted_item.text) {
 								console.log("Retweeted : " + tweeted_item.text);
+								bot_stats.store_retweets(item);
 							}
 							else {
 								console.log("Retweet failed");
