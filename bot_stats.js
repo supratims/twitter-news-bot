@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var retweets_file = './retweets.json'; 
+var retweets_file = './retweets'; 
 var last_retweet_file = './last_retweet';
 
 function store_retweets(tweet){
