@@ -21,7 +21,15 @@ app.listen(process.env.PORT || 3000);
 console.log('Listening on port ' + (process.env.PORT || 3000));
 
 var poll_user = require('./poll_user');
-poll_user.run();
+
+// Get list of people we are following
+var list_handles = require('./list_handles');
+var following = list_handles.getFollowingList();
+
+// For each in list of following we poll as per its config
+following.list.forEach(function(item, i){
+	poll_user.run(item);
+});
 
 var ping_app = require('./ping_app');
 ping_app.run();

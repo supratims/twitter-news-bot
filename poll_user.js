@@ -3,8 +3,8 @@ var retweet = require('./retweet');
 var bot_stats = require('./bot_stats');
 
 var poll_interval = 120; // 2 mins
-		
-function _run(){
+
+function _run(twitter_object){
 	(function poll(){
 		var last_id;
 		// contains the last id analysed
