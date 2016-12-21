@@ -1,3 +1,5 @@
+// This is required so that the heroku app does not go down due to inactivity
+
 var http = require("http");
 
 function run(){
