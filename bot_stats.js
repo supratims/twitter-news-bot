@@ -12,7 +12,7 @@ function retweets(){
 }
 
 function store_last_retweet(tweet){
-	fs.writeFile(last_retweet_file, tweet.id);
+	fs.writeFileSync(last_retweet_file, tweet.id);
 }
 
 function last_retweet(){
